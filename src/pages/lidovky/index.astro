@@ -1,0 +1,38 @@
+---
+import Layout from "../../layouts/Layout.astro";
+---
+<Layout>
+    <header>
+        Lidové noviny, 2. května 1945 ráno
+    </header>
+    <div class="container">
+        <article>
+            <h1>VŮDCE PADL</h1>
+            <div class="subtitle">
+                Vůdcův hlavní stan 1. května
+            </div>
+            <div class="perex">
+                <p>
+                    Vůdce Adolf Hitler dnes odpoledne ve svém bojovém stanovišti v Říšské kanceláři, bojuje až do posledního dechu proti bolševismu, padl za Německo.
+                </p>
+                <p>
+                    Dne 30. dubna určil Vůdce svým nástupcem velkoadmirála Dönitze.
+                </p>
+            </div>
+            <div class="content">
+                <p>
+                    Adolf Hitler dokončil svou životní dráhu – životní dráhu v dějinách ojedinělou – v nejurputnějším boji proti svému největšímu odpůrci, proti bolševismu, v troskách hlavního města, jehož velkolepé vybudování bylo jedním z jeho životních snů.
+                </p>
+            </div>
+            <a role="button" href="/lidovky/2" class="continue disabled">Pokračovat</a>
+        </article>
+    </div>
+</Layout>
+
+<script>
+    setTimeout(() => {
+        // remove disabled class
+        const continueButton = document.querySelector('.continue');
+        continueButton.classList.remove('disabled');
+    }, 12000);
+</script>

@@ -1,11 +1,25 @@
+---
+interface Props {
+	title?: string;
+}
+
+let { title } = Astro.props as Props;
+
+if (!title) {
+	title = "Název";
+} else {
+	title += " | Název";
+}
+---
+
 <!doctype html>
-<html lang="en">
+<html lang="cs">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>{title}</title>
 	</head>
 	<body>
 		<slot />
@@ -13,10 +27,144 @@
 </html>
 
 <style>
+	:root {
+		--primary: #000;
+		--secondary: #fff;
+	}
+
 	html,
 	body {
 		margin: 0;
 		width: 100%;
 		height: 100%;
+	}
+
+	@media screen and (prefers-color-scheme: dark) {
+		:global(:root) {
+			--primary: #fff;
+			--secondary: #000;
+		}
+	}
+
+	@font-face {
+		font-family: "SpecialElite";
+		src: url("/fonts/SpecialElite.ttf") format("truetype");
+		font-weight: 400;
+		font-style: normal;
+	}
+
+	* {
+		font-family: "SpecialElite", sans-serif;
+		background-color: var(--secondary);
+		color: var(--primary);
+	}
+
+	:global(.container) {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		height: 100%;
+	}
+
+	:global([role="button"]) {
+		text-decoration: none;
+		background-color: var(--primary);
+		color: var(--secondary);
+		padding: 1rem 2rem;
+		border-radius: 0.5rem;
+		font-size: 1.5rem;
+		font-weight: bold;
+		text-align: center;
+		cursor: pointer;
+		margin: 40px 0 40px 0;
+		display: block;
+	}
+
+	:global(.container > *) {
+		padding: 24px;
+	}
+
+	:global(article) {
+		h1 {
+			font-size: 5rem;
+			text-align: center;
+			margin: 0 auto;
+			letter-spacing: 18px;
+			font-weight: 700;
+		}
+
+		.perex {
+			margin: 0 auto;
+			max-width: 600px;
+			font-weight: 900;
+		}
+
+		.perex p {
+			margin: 0 0 10px 0;
+		}
+
+		p {
+			text-indent: 3em;
+		}
+
+		.subtitle {
+			text-align: right;
+			margin-bottom: 10px;
+		}
+		max-width: 800px;
+	}
+
+	@media screen and (max-width: 800px) {
+		:global(article) {
+			h1 {
+				font-size: 3rem;
+				letter-spacing: 10px;
+			}
+			.perex {
+				max-width: 100%;
+			}
+		}
+	}
+
+	@media screen and (max-width: 470px) {
+		:global(article) {
+			h1 {
+				font-size: 2.5rem;
+				letter-spacing: 8px;
+			}
+		}
+	}
+
+	@media screen and (max-width: 360px) {
+		:global(article) {
+			h1 {
+				font-size: 2rem;
+				letter-spacing: 6px;
+			}
+		}
+	}
+
+	:global(header) {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		padding-top: 12px;
+		position: fixed;
+		font-size: 0.9rem;
+	}
+
+	:global(.continue::after) {
+		content: " «";
+	}
+
+	:global(.continue::before) {
+		content: "» ";
+	}
+
+	:global(.disabled) {
+		pointer-events: none;
+		opacity: 0.5;
 	}
 </style>
