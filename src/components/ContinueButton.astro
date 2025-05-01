@@ -2,13 +2,17 @@
 interface Props {
     href: string;
     readTime: number;
+    text?: string;
 }
 
-let {href, readTime} = Astro.props as Props;
+let {href, readTime, text} = Astro.props as Props;
+
+if (!text)
+    text = "Pokračovat";
 ---
 
 <a role="button" href={href} class="continue disabled" data-readtime={readTime}>
-    Pokračovat
+    {text}
 </a>
 
 <script>

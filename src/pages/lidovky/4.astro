@@ -10,7 +10,9 @@ import Quiz from "../../components/Quiz.astro";
         <div>
             <h1>Vyberte pravdivé tvrzení</h1>
 
-            <Quiz question="V troskách jakého města zemřel Adolf Hitler?" options={["Mnichov", "Berlín", "Vídeň", "Norimberk"]} correctAnswer="Berlín" nextLink="/lidovky/3" />
+            <Quiz question="Co se veřejnost dozvěděla o smrti Adolfa Hitlera? Rozhodněte na základě útržků z novin."
+                  options={["Spáchal sebevraždu ve svém bunkru", "Byl zastřelen bolševickým vojákem", "Padl hrdinnou smrtí", "Nezemřel"]}
+                  correctAnswer="Padl hrdinnou smrtí" nextLink="/lidovky/shrnuti"/>
         </div>
     </div>
 </Layout>
