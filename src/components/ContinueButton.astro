@@ -1,0 +1,20 @@
+---
+interface Props {
+    href: string;
+    readTime: number;
+}
+
+let {href, readTime} = Astro.props as Props;
+---
+
+<a role="button" href={href} class="continue disabled" data-readtime={readTime}>
+    Pokračovat
+</a>
+
+<script>
+    const continueButton = document.querySelector('.continue') as HTMLAnchorElement;
+    let readTime = parseInt(continueButton.getAttribute('data-readtime') || '0');
+    setTimeout(() => {
+        continueButton.classList.remove('disabled');
+    }, readTime * 1000);
+</script>

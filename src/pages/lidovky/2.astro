@@ -1,5 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import Quiz from "../../components/Quiz.astro";
 ---
 <Layout>
     <header>
@@ -7,85 +8,10 @@ import Layout from "../../layouts/Layout.astro";
     </header>
     <div class="container">
         <div>
-            <h1>Práce s úryvkem</h1>
-            <h2>Vyberte správnou odpověď</h2>
-            <p>V troskách jakého města zemřel Adolf Hitler?</p>
-            <label>
-                <input type="radio" name="city" value="Mnichov" />
-                Mnichov
-            </label>
+            <h1>Vyberte pravdivé tvrzení</h1>
 
-            <label>
-                <!-- V této aplikaci doopravdy není třeba server side řešení. Podvádíte? Obíráte sami sebe. -->
-                <input type="radio" name="city" value="Berlín" data-correct />
-                Berlín
-            </label>
-
-            <label>
-                <input type="radio" name="city" value="Vídeň" />
-                Vídeň
-            </label>
-
-            <label>
-                <input type="radio" name="city" value="Norimberk" />
-                Norimberk
-            </label>
-
-            <a role="button" href="/lidovky/3" class="continue disabled">Pokračovat</a>
+            <Quiz question="V troskách jakého města zemřel Adolf Hitler?" options={["Mnichov", "Berlín", "Vídeň", "Norimberk"]} correctAnswer="Berlín" nextLink="/lidovky/3" />
         </div>
     </div>
 </Layout>
 
-<style>
-    input[type=checkbox] {
-        margin-right: 10px;
-    }
-
-    label {
-        display: block;
-        margin-bottom: 10px;
-        padding: 12px;
-        border: 1px solid #ccc;
-        border-radius: 0.5rem;
-        font-weight: bold;
-    }
-
-    :global(.correct) {
-        background-color: #c8e6c9;
-        border-color: #388e3c;
-        color: #388e3c;
-    }
-</style>
-
-<script>
-    const continueButton = document.querySelector('.continue');
-    const radioButtons = document.querySelectorAll('input[type="radio"]');
-
-    radioButtons.forEach(radio => {
-        radio.addEventListener('change', () => {
-            if (radio.checked && radio.hasAttribute("data-correct")) {
-                infoRadio(radio, "Správně!");
-                radio.closest("label").classList.add('correct');
-                continueButton.classList.remove('disabled');
-            } else {
-                infoRadio(radio, "Špatně... Zkus to znovu!");
-            }
-        });
-    });
-
-    function infoRadio(r:HTMLElement, m:string, nc:boolean = false) {
-        // find the parent label
-        const label = r.closest('label').lastChild;
-        if (!label) return;
-        // get the old text
-        const old = label.textContent;
-        // set the new text
-        label.textContent = m;
-        if (!nc) {
-            setTimeout(() => {
-                // set the old text back
-                label.textContent = old;
-            }, 2000);
-        }
-    }
-</script>

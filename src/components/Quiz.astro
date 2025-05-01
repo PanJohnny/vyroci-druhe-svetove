@@ -1,0 +1,80 @@
+---
+interface Props {
+    question: string;
+    options: string[];
+    correctAnswer: string;
+    nextLink: string;
+}
+
+let { question, options, correctAnswer, nextLink } = Astro.props as Props;
+
+const correctAnswerIndex = options.indexOf(correctAnswer);
+---
+<div>
+    <h3>{question}</h3>
+    {options.map((option, index) => (
+        <label>
+            <input type="radio" name="answer" value={option} data-correct={correctAnswerIndex === index} />
+            {option}
+        </label>
+    ))}
+
+    <a role="button" href={nextLink} class="continue disabled">Pokračovat</a>
+</div>
+
+<style>
+    input[type=checkbox] {
+        margin-right: 10px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 10px;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 0.5rem;
+        font-weight: bold;
+    }
+
+    :global(.correct) {
+        background-color: #c8e6c9;
+        border-color: #388e3c;
+        color: #388e3c;
+    }
+</style>
+
+<script>
+    const continueButton = document.querySelector('.continue') as HTMLElement;
+    const radioButtons = document.querySelectorAll('input[type="radio"]');
+
+    radioButtons.forEach(radio => {
+        if (radio instanceof HTMLInputElement) {
+            radio.addEventListener('change', () => {
+                if (radio.checked && radio.getAttribute("data-correct") === "true") {
+                    infoRadio(radio, "Správně!");
+                    let label = radio.closest("label");
+                    if (label) {
+                        label.classList.add('correct');
+                    }
+                    continueButton.classList.remove('disabled');
+                } else {
+                    infoRadio(radio, "Špatně... Zkus to znovu!");
+                }
+            });
+        }
+    });
+
+    function infoRadio(r:HTMLElement, m:string, nc:boolean = false) {
+        let label = r.closest('label');
+        if (!label) return;
+        let textNode = label.lastChild;
+        if (!textNode) return;
+        const old = textNode.textContent;
+        textNode.textContent = m;
+        if (!nc) {
+            setTimeout(() => {
+                textNode.textContent = old;
+            }, 2000);
+        }
+    }
+</script>
