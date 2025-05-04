@@ -20,9 +20,11 @@ if (!text)
 </noscript>
 
 <script>
-    const continueButton = document.querySelector('.continue') as HTMLAnchorElement;
-    let readTime = parseInt(continueButton.getAttribute('data-readtime') || '0');
-    setTimeout(() => {
-        continueButton.classList.remove('disabled');
-    }, readTime * 1000);
+    document.addEventListener("astro:page-load", () => {
+        let continueButton = document.querySelector('.continue') as HTMLAnchorElement;
+        let readTime = parseInt(continueButton.getAttribute('data-readtime') || '0');
+        setTimeout(() => {
+            continueButton.classList.remove('disabled');
+        }, readTime * 1000);
+    })
 </script>
