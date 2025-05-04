@@ -6,20 +6,21 @@ interface Props {
     nextLink: string;
 }
 
-let { question, options, correctAnswer, nextLink } = Astro.props as Props;
+let {question, options, correctAnswer, nextLink} = Astro.props as Props;
 
 const correctAnswerIndex = options.indexOf(correctAnswer);
 ---
 <div>
     <h3>{question}</h3>
     {options.map((option, index) => (
-        <label>
-            <input type="radio" name="answer" value={option} data-correct={correctAnswerIndex === index} />
-            {option}
-        </label>
+            <label>
+                <input type="radio" name="answer" value={option} data-correct={correctAnswerIndex === index}/>
+                {option}
+            </label>
     ))}
 
-    <a role="button" href={nextLink} class="continue disabled">Pokračovat</a>
+    <!-- data-readtime is used because there is a bug in astro transitions that will apply the javascript from ContinueButton and enable this and we don't want that -->
+    <a role="button" href={nextLink} class="continue disabled" id="bajdhbasjhd" data-readtime={99999}>Pokračovat</a>
 </div>
 
 <style>
@@ -44,27 +45,29 @@ const correctAnswerIndex = options.indexOf(correctAnswer);
 </style>
 
 <script>
-    const continueButton = document.querySelector('.continue') as HTMLElement;
-    const radioButtons = document.querySelectorAll('input[type="radio"]');
+    document.addEventListener("astro:page-load", () => {
+        let continueButton = document.querySelector('.continue') as HTMLElement;
+        let radioButtons = document.querySelectorAll('input[type="radio"]');
 
-    radioButtons.forEach(radio => {
-        if (radio instanceof HTMLInputElement) {
-            radio.addEventListener('change', () => {
-                if (radio.checked && radio.getAttribute("data-correct") === "true") {
-                    infoRadio(radio, "Správně!");
-                    let label = radio.closest("label");
-                    if (label) {
-                        label.classList.add('correct');
+        radioButtons.forEach(radio => {
+            if (radio instanceof HTMLInputElement) {
+                radio.addEventListener('change', () => {
+                    if (radio.checked && radio.getAttribute("data-correct") === "true") {
+                        infoRadio(radio, "Správně!");
+                        let label = radio.closest("label");
+                        if (label) {
+                            label.classList.add('correct');
+                        }
+                        continueButton.classList.remove('disabled');
+                    } else {
+                        infoRadio(radio, "Špatně... Zkus to znovu!");
                     }
-                    continueButton.classList.remove('disabled');
-                } else {
-                    infoRadio(radio, "Špatně... Zkus to znovu!");
-                }
-            });
-        }
+                });
+            }
+        });
     });
 
-    function infoRadio(r:HTMLElement, m:string, nc:boolean = false) {
+    function infoRadio(r: HTMLElement, m: string, nc: boolean = false) {
         let label = r.closest('label');
         if (!label) return;
         let textNode = label.lastChild;

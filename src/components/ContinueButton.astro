@@ -22,6 +22,9 @@ if (!text)
 <script>
     document.addEventListener("astro:page-load", () => {
         let continueButton = document.querySelector('.continue') as HTMLAnchorElement;
+        if (!continueButton) {
+            return;
+        }
         let readTime = parseInt(continueButton.getAttribute('data-readtime') || '0');
         setTimeout(() => {
             continueButton.classList.remove('disabled');
