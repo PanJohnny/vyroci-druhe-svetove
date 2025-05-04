@@ -1,0 +1,130 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import RedirectBar from "../../components/RedirectBar.astro";
+---
+<Layout title="Lidové noviny, 2. května 1945 ráno">
+    <RedirectBar to="/rude-pravo/1"/>
+    <div class="container">
+        <div class="rude">
+            <div class="marge">
+                <span class="underline">Ve středu dne 16. května 1965</span>
+                <div class="block">
+                    <span>Vychází denně. Tiskne svoboda,</span>
+                    <span>tiskařské, nakladatelské a knihku-</span>
+                    <span>pecké ponik, Praha II., Na Flo-</span>
+                    <div class="center">renci 13.</div>
+                </div>
+            </div>
+            <div class="title">
+                <h1>RUDÉ PRÁVO</h1>
+                <h2>ÚSTŘEDNÍ ORGÁN KOMUNISTICKÉ STRANY ČESKOSLOVENSKA</h2>
+            </div>
+            <div class="marge">
+                <div class="line"><div class="underline">Číslo 9.</div> <div class="price">Cena 70 hal.</div></div>
+                <div class="center">
+                    <div>Readkce a administrace Praha II.,</div>
+                    <div>Na Florenci 13. Telefon 348-51.</div>
+                </div>
+            </div>
+        </div>
+        <noscript>
+            <a role="button" class="continue" href="/rude-pravo/1">Listovat</a>
+        </noscript>
+    </div>
+</Layout>
+
+<style>
+    .rude {
+        display: flex;
+        flex-direction: row;
+        max-width: 90vw;
+        min-width: fit-content;
+        gap: 15px;
+        border-bottom: 6px var(--primary);
+        border-bottom-style: double;
+    }
+
+    .line {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .title {
+        text-align: center;
+        margin: 0;
+        width: 100%;
+    }
+
+    .center {
+        text-align-last: center !important;
+    }
+
+    .block {
+        text-align-last: justify;
+    }
+
+    .block span {
+        display: block;
+        width: 100%;
+    }
+
+    .marge {
+        padding-top: 2vw;
+        white-space: nowrap;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+        min-height: 8vw;
+        gap: 10px;
+    }
+
+    .price {
+        font-size: 1.15rem;
+        font-weight: 1000;
+    }
+
+    .underline {
+        text-decoration: underline;
+        font-weight: bold;
+    }
+
+    h1 {
+        font-size: 6vw;
+        font-style: italic;
+        margin: 0;
+        font-family: "Merriweather", serif;
+    }
+
+    h2 {
+        margin-top: -0.3vw;
+        font-size: 1.24vw;
+    }
+
+    @media screen and (max-width: 1100px) {
+        .rude {
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+            border-bottom: none;
+        }
+
+        .rude > :nth-child(1) {
+            order: 2;
+        }
+
+        .rude > :nth-child(2) {
+            order: 1;
+            h1 {
+                font-size: 12vw;
+            }
+            h2 {
+                font-size: 2.5vw;
+            }
+        }
+
+        .rude > :nth-child(3) {
+            order: 3;
+        }
+    }
+</style>
