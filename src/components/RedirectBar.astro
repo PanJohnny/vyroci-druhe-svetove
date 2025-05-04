@@ -1,0 +1,37 @@
+---
+interface Props {
+    to: string;
+}
+let { to } = Astro.props as Props;
+---
+
+<div class="countdown" data-to={to}></div>
+<style>
+    .countdown {
+        display: block;
+        top: 0;
+        left: 0;
+        position: fixed;
+        width: 0;
+        height: 2px;
+        background: var(--primary);
+        animation: countdown 5s linear forwards;
+    }
+
+    @keyframes countdown {
+        0% {
+            width: 0;
+        }
+        100% {
+            width: 100vw;
+        }
+    }
+</style>
+
+<script>
+    import {navigate} from "astro:transitions/client";
+    setTimeout(() => {
+        const countdown = document.querySelector('.countdown') as HTMLDivElement;
+        navigate(countdown.dataset.to);
+    }, 5000);
+</script>

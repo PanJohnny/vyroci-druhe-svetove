@@ -15,6 +15,10 @@ if (!text)
     {text}
 </a>
 
+<noscript>
+    <a role="button" class="continue" href={href} title="Nemáte povolený JavaScript!">{text}</a>
+</noscript>
+
 <script>
     const continueButton = document.querySelector('.continue') as HTMLAnchorElement;
     let readTime = parseInt(continueButton.getAttribute('data-readtime') || '0');

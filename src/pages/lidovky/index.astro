@@ -1,32 +1,60 @@
 ---
-import ContinueButton from "../../components/ContinueButton.astro";
 import Layout from "../../layouts/Layout.astro";
+import RedirectBar from "../../components/RedirectBar.astro";
 ---
-<Layout title="VŮDCE PADL - Lidové noviny, 2. května 1945 ráno">
+<Layout title="Lidové noviny, 2. května 1945 ráno">
+    <RedirectBar to="/lidovky/1"/>
     <div class="container">
-        <div class="header">
-            Lidové noviny, 2. května 1945 ráno
+        <div class="lidovky">
+            <h1>LIDOVÉ NOVINY</h1>
+            <div class="info">
+                <div>ROČ. <strong>53</strong>. ČÍS. 104</div>
+                <div>STŘEDA 2. KVĚTNA 1945 RÁNO</div>
+                <div>* ZA 80 HALÉŘŮ</div>
+            </div>
+            <noscript>
+                <a role="button" class="continue" href="/lidovky/1">Listovat</a>
+            </noscript>
         </div>
-        <article>
-            <h1>VŮDCE PADL</h1>
-            <div class="subtitle">
-                Vůdcův hlavní stan 1. května
-            </div>
-            <div class="perex">
-                <p>
-                    Vůdce Adolf Hitler dnes odpoledne ve svém bojovém stanovišti v Říšské kanceláři, bojuje až do posledního dechu proti bolševismu, padl za Německo.
-                </p>
-                <p>
-                    Dne 30. dubna určil Vůdce svým nástupcem velkoadmirála Dönitze.
-                </p>
-            </div>
-            <div class="content">
-                <p>
-                    Adolf Hitler dokončil svou životní dráhu – životní dráhu v dějinách ojedinělou – v nejurputnějším boji proti svému největšímu odpůrci, proti bolševismu, v troskách hlavního města, jehož velkolepé vybudování bylo jedním z jeho životních snů.
-                </p>
-            </div>
-            <ContinueButton href="/lidovky/2" readTime={12} />
-        </article>
     </div>
 </Layout>
 
+<style>
+    .lidovky {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 90vw;
+        min-width: fit-content;
+    }
+
+    h1 {
+        font-size: 10vw;
+        font-style: italic;
+        margin: 0;
+    }
+
+    .info {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+        border-top: 1px solid var(--primary);
+        border-bottom: 1px solid var(--primary);
+        padding: 9px 0 3px 0;
+        margin-bottom: 16px;
+    }
+
+    @media screen and (max-width: 742px) {
+        .info {
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            text-align: center;
+        }
+    }
+
+    a {
+        width: 100%;
+    }
+</style>

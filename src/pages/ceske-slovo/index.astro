@@ -1,23 +1,118 @@
 ---
+import Image from "astro/components/Image.astro";
 import Layout from "../../layouts/Layout.astro";
-import ContinueButton from "../../components/ContinueButton.astro";
+import ceskeSlovoLight from "../../assets/ceske_slovo_white.svg"
+import ceskeSlovoDark from "../../assets/ceske_slovo_dark.svg";
+import RedirectBar from "../../components/RedirectBar.astro";
 ---
-<Layout title="LIDE ČESKÝ! – Osvobozené České Slovo, 7. května 1945">
+<Layout title="Osvobozené České Slovo, 7. května 1945">
+    <RedirectBar to="/ceske-slovo/1" />
     <div class="container">
-        <div class="header">
-            Osvobozené České Slovo, 7. května 1945
+        <div class="slovo">
+            <div class="info-left">
+                <h3>7. KVĚTNA 1945</h3>
+                <h3>ROČNÍK I.</h3>
+                <strong>ČÍSLO 2.</strong>
+                <div class="small">
+                    <span>Šéfredaktor Karel Nový. &mdash;</span>
+                    <span>Odpovědný redaktor František</span>
+                    <span>Meloun. &mdash; Redakce a ad-</span>
+                    <span>ministrace v Praze II., Vác-</span>
+                    <span>lavské náměstí číslo 36. &mdash; Vy-</span>
+                    <span>dává a tiskne Melantrich a. s.</span>
+                </div>
+                <div class="ultra-strong">CENA 50 HAL.</div>
+            </div>
+            <h1>
+                <Image src={ceskeSlovoLight} alt="Osvobozené České Slovo" class="light"/>
+                <Image src={ceskeSlovoDark} alt="Osvobozené České Slovo" class="dark"/>
+            </h1>
         </div>
-        <article>
-            <h1>LIDE ČESKÝ!</h1>
-            <div class="content">
-                <p>Česká národní rada jako představitelka revolučního hnutí českého lidu a jako zmocněnec vlády Československé republiky v Košicích se ujíma dnešním dnem moci vládní a výkonné na území Čech, Moravy a Slezka.</p>
-                <p>Bude doděláno... Chtěl bych projít titulky a dostat se přes další noviny a tak sledovat dění. Nic extra a kvízi jsou jen pro udržení pozornosti. Každé noviny budou mít hlavní titulek a pak se projde třeba nějaký další článek, konkrétně u těchto novin přidám další titulky, jelikož je to zajímavé.</p>
-            </div>
-            <div class="subtitle">
-                V Praze 5. května 1945 <br>
-                ČESKÁ NÁRODNÍ RADA
-            </div>
-            <ContinueButton href="/" readTime={0} text="Zpět na začátek" />
-        </article>
     </div>
 </Layout>
+
+<style>
+    .slovo {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        min-width: fit-content;
+        gap: 3mm;
+    }
+
+    h1 {
+        margin: 0;
+        padding: 0;
+        max-width: fit-content;
+        font-family: "Brush Script", sans-serif;
+    }
+
+    :global(img) {
+        width: 100%;
+        height: auto;
+    }
+
+    .invisible-space {
+        visibility: hidden;
+    }
+
+    .dark {
+        display: none;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        .light {
+            display: none;
+        }
+
+        .dark {
+            display: block;
+        }
+    }
+
+    .info-left {
+        text-align: center;
+        padding: 16px;
+        border: 2px solid var(--primary);
+        margin: 16px 0;
+    }
+
+    .ultra-strong {
+        font-size: 8mm;
+        font-weight: 1000;
+        padding: 5mm 0 0 0;
+    }
+
+    .info-left h3, strong {
+        font-size: 5mm;
+    }
+
+    .small {
+        width: 100%;
+        font-size: 4mm;
+        text-align-last: justify;
+        margin-top: 3mm;
+    }
+
+    .small span {
+        display: block;
+        width: 100%;
+    }
+
+    @media (max-width: 1110px) {
+        :global(img) {
+            width: 90vw;
+            height: auto;
+        }
+
+        .info-left {
+            transform:scale(0.8);
+        }
+
+        .slovo {
+            flex-direction: column-reverse;
+            align-items: center;
+            gap: 0;
+        }
+    }
+</style>

@@ -8,7 +8,36 @@ import Layout from '../layouts/Layout.astro';
 			<h1>Novinové bádání</h1>
 			<h2>k 80. výročí od konce 2. světové války</h2>
 			<p>Podívejte se jak dobová média hleděla na aktuální dění.</p>
+			<noscript>
+				Pro správné fungování této stránky doporučujeme zapnout JavaScript. Plná funkčnost bez JavaScriptu není garantovaná.
+			</noscript>
 			<a role="button" href="/lidovky">Začít</a>
+		</div>
+		<div class="footer">
+			Vytvořil <a href="//panjohnny.me/cs/" class="subtle-anchor">Jan Štefanča</a> <br> <br>
+			<a href="/literatura" class="subtle-anchor">Využitá literatura</a>
 		</div>
 	</div>
 </Layout>
+
+<style>
+	.subtle-anchor {
+		color: var(--primary);
+		text-decoration: underline coral;
+		text-decoration-style: wavy;
+	}
+
+	.footer {
+		text-align: center;
+	}
+
+	noscript {
+		text-align: center;
+		margin: 16px 0;
+		background-color: coral;
+		color: var(--primary);
+		padding: 16px;
+		border-radius: 8px;
+		font-size: 1.5rem;
+	}
+</style>
