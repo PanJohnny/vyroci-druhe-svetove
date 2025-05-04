@@ -1,0 +1,16 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Quiz from "../../components/Quiz.astro";
+---
+<Layout title="Osvobozené České Slovo, 7. května 1945">
+    <div class="container">
+        <div class="header">
+            Osvobozené České Slovo, 7. května 1945
+        </div>
+        <div>
+            <h1>Vyberte pravdivé tvrzení</h1>
+
+            <Quiz question="Jaké město podle zprávy z 7. května 1945 obsadily americké jednotky při postupu na Prahu?" options={["Olomouc", "Plzeň", "Karlovy Vary", "Beroun"]} correctAnswer="Beroun" nextLink="/ceske-slovo/shrnuti" />
+        </div>
+    </div>
+</Layout>
