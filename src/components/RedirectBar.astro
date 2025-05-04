@@ -30,8 +30,16 @@ let { to } = Astro.props as Props;
 
 <script>
     import {navigate} from "astro:transitions/client";
-    setTimeout(() => {
-        const countdown = document.querySelector('.countdown') as HTMLDivElement;
-        navigate(countdown.dataset.to);
-    }, 5000);
+    document.addEventListener("astro:page-load", () => {
+        setTimeout(() => {
+            let countdown = document.querySelector('.countdown') as HTMLDivElement;
+            navigate(countdown.dataset.to);
+        }, 5000);
+
+        document.addEventListener("click", () => {
+            let countdown = document.querySelector('.countdown') as HTMLDivElement;
+            if (countdown)
+                navigate(countdown.dataset.to);
+        })
+    })
 </script>
