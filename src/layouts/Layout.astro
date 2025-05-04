@@ -1,200 +1,245 @@
 ---
 import {ClientRouter} from "astro:transitions";
 interface Props {
-	title?: string;
+    title?: string;
 }
 
-let { title } = Astro.props as Props;
+let {title} = Astro.props as Props;
 
 if (!title) {
-	title = "Noviny na konci 2. světové války";
+    title = "Květen 45";
 } else {
-	title += " | Noviny na konci 2. světové války";
+    title += " | Květen 45";
 }
 ---
 
 <!doctype html>
 <html lang="cs">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width"/>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+    <meta name="generator" content={Astro.generator}/>
+    <title>{title}</title>
 
-		<ClientRouter />
-	</head>
-	<body transition:animate="fade">
-		<slot />
-	</body>
+    <ClientRouter/>
+</head>
+<body transition:animate="fade">
+<slot/>
+<footer>
+    <div>Vytvořil <a href="//panjohnny.me/cs/" class="subtle-anchor">Jan Štefanča</a></div>
+    <div><a href="/o-strance" class="subtle-anchor">O stránce</a> </div>
+    <div><a href="/literatura" class="subtle-anchor">Využitá literatura</a></div>
+</footer>
+</body>
 </html>
 
 <style>
-	:root {
-		--primary: #000;
-		--secondary: #fff;
-	}
+    :root {
+        --primary: #000;
+        --secondary: #fff;
+    }
 
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+    html,
+    body {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+    }
 
-	@media screen and (prefers-color-scheme: dark) {
-		:global(:root) {
-			--primary: #fff;
-			--secondary: #000;
-		}
-	}
+    @media screen and (prefers-color-scheme: dark) {
+        :global(:root) {
+            --primary: #fff;
+            --secondary: #000;
+        }
+    }
 
-	@font-face {
-		font-family: "SpecialElite";
-		src: url("/fonts/SpecialElite.ttf") format("truetype");
-		font-weight: 400;
-		font-style: normal;
-	}
+    @font-face {
+        font-family: "SpecialElite";
+        src: url("/fonts/SpecialElite.ttf") format("truetype");
+        font-weight: 400;
+        font-style: normal;
+    }
 
-	* {
-		font-family: "SpecialElite", sans-serif;
-		background-color: var(--secondary);
-		color: var(--primary);
-	}
+    * {
+        font-family: "SpecialElite", sans-serif;
+        background-color: var(--secondary);
+        color: var(--primary);
+    }
 
-	:global(.container) {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		width: 100%;
-		min-height: 100%;
-		flex-direction: column;
-	}
+    :global(.container) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        min-height: 100%;
+        flex-direction: column;
+    }
 
-	:global([role="button"]) {
-		text-decoration: none;
-		background-color: var(--primary);
-		color: var(--secondary);
-		padding: 1rem 2rem;
-		border-radius: 0.5rem;
-		font-size: 1.5rem;
-		font-weight: bold;
-		text-align: center;
-		cursor: pointer;
-		margin: 40px 0 0 0;
-		display: block;
-	}
+    :global([role="button"]) {
+        text-decoration: none;
+        background-color: var(--primary);
+        color: var(--secondary);
+        padding: 1rem 2rem;
+        border-radius: 0.5rem;
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-align: center;
+        cursor: pointer;
+        margin: 40px 0 0 0;
+        display: block;
+    }
 
-	@media print {
-		:global([role="button"]) {
-			display: none;
-		}
-	}
+    @media print {
+        :global([role="button"]) {
+            display: none;
+        }
+    }
 
-	:global(.container > *) {
-		padding: 24px;
-	}
+    :global(.container > *) {
+        padding: 24px;
+    }
 
-	:global(article) {
-		h1 {
-			font-size: 5rem;
-			text-align: center;
-			margin: 0 auto;
-			letter-spacing: 18px;
-			font-weight: 700;
-		}
+    :global(article) {
+        h1 {
+            font-size: 5rem;
+            text-align: center;
+            margin: 0 auto;
+            letter-spacing: 18px;
+            font-weight: 700;
+        }
 
-		h2, h3 {
-			text-align: center;
-			margin-top: 0;
-		}
+        h2, h3 {
+            text-align: center;
+            margin-top: 0;
+        }
 
-		.perex {
-			margin: 0 auto;
-			max-width: 600px;
-			font-weight: 900;
-		}
+        .perex {
+            margin: 0 auto;
+            max-width: 600px;
+            font-weight: 900;
+        }
 
-		.perex p {
-			margin: 0 0 10px 0;
-		}
+        .perex p {
+            margin: 0 0 10px 0;
+        }
 
-		p {
-			text-indent: 3em;
-		}
+        p {
+            text-indent: 3em;
+        }
 
-		.subtitle {
-			text-align: right;
-			margin-bottom: 10px;
-		}
-		max-width: 800px;
-	}
+        .subtitle {
+            text-align: right;
+            margin-bottom: 10px;
+        }
 
-	@media screen and (max-width: 800px) {
-		:global(article) {
-			h1 {
-				font-size: 3rem;
-				letter-spacing: 10px;
-			}
-			.perex {
-				max-width: 100%;
-			}
-		}
-	}
+        max-width: 800px;
+    }
 
-	@media screen and (max-width: 470px) {
-		:global(article) {
-			h1 {
-				font-size: 2.5rem;
-				letter-spacing: 8px;
-			}
-		}
-	}
+    @media screen and (max-width: 800px) {
+        :global(article) {
+            h1 {
+                font-size: 3rem;
+                letter-spacing: 10px;
+            }
 
-	@media screen and (max-width: 360px) {
-		:global(article) {
-			h1 {
-				font-size: 2rem;
-				letter-spacing: 6px;
-			}
-		}
-	}
+            .perex {
+                max-width: 100%;
+            }
+        }
+    }
 
-	:global(.header) {
-		display: flex;
-		justify-content: center;
-		width: 100%;
-		padding: 10px 0 0 0;
-		font-size: 0.9rem;
-	}
+    @media screen and (max-width: 470px) {
+        :global(article) {
+            h1 {
+                font-size: 2.5rem;
+                letter-spacing: 8px;
+            }
+        }
+    }
 
-	:global(.continue::after) {
-		content: " «";
-	}
+    @media screen and (max-width: 360px) {
+        :global(article) {
+            h1 {
+                font-size: 2rem;
+                letter-spacing: 6px;
+            }
+        }
+    }
 
-	:global(.continue::before) {
-		content: "» ";
-	}
+    :global(.header) {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        padding: 10px 0 0 0;
+        font-size: 0.9rem;
+    }
 
-	:global(cite::before) {
-		content: "»";
-	}
+    :global(.continue::after) {
+        content: " «";
+    }
 
-	:global(cite::after) {
-		content: "«";
-	}
+    :global(.continue::before) {
+        content: "» ";
+    }
 
-	:global(cite) {
-		font-style: unset;
-	}
+    :global(cite::before) {
+        content: "»";
+    }
 
-	:global(.disabled) {
-		pointer-events: none;
-		opacity: 0.5;
-	}
+    :global(cite::after) {
+        content: "«";
+    }
 
-	:global(.content) {
-		margin: 0 auto;
-		max-width: 600px;
-	}
+    :global(cite) {
+        font-style: unset;
+    }
+
+    :global(.disabled) {
+        pointer-events: none;
+        opacity: 0.5;
+    }
+
+    :global(.content) {
+        margin: 0 auto;
+        max-width: 600px;
+    }
+
+    footer {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: calc(100% - 4rem);
+        justify-content: space-between;
+        padding: 1rem 2rem;
+    }
+
+    .subtle-anchor {
+        color: var(--primary);
+        text-decoration: underline coral;
+        text-decoration-style: wavy;
+    }
+
+    @media (max-width: 840px) {
+        footer {
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            text-align: center;
+            position: relative;
+        }
+
+        footer:nth-child(2) {
+            order: 3;
+        }
+
+        footer:nth-child(3) {
+            order: 2;
+        }
+
+        footer:nth-child(1) {
+            order: 1;
+        }
+    }
 </style>
