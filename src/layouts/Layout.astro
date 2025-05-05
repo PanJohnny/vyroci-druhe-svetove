@@ -1,5 +1,6 @@
 ---
 import {ClientRouter} from "astro:transitions";
+import Analytics from '@vercel/analytics/astro'
 interface Props {
     title?: string;
 }
@@ -23,6 +24,7 @@ if (!title) {
     <title>{title}</title>
 
     <ClientRouter/>
+    <Analytics />
 </head>
 <body transition:animate="fade">
 <slot/>
