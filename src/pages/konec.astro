@@ -25,6 +25,18 @@ import ContinueButton from "../components/ContinueButton.astro";
                 student gymnázia Litoměřická
             </p>
             <ContinueButton href="/" text="Úvod" readTime={-1} />
+
+            <h2>Sdílení</h2>
+            <p>Web naleznete pod odkazem: kveten45.panjohnny.me</p>
+            <p>Další možností je využít QR kód, ten stáhnete kliknutím na něj</p>
+            <a href="/QR.png" download><img src="/QR.png" alt="QR kód" class="qr-code"></a>
         </div>
     </div>
 </Layout>
+
+<style>
+    .qr-code {
+        max-width: 80vw;
+        border-radius: 10px;
+    }
+</style>
