@@ -1,0 +1,30 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ContinueButton from "../components/ContinueButton.astro";
+---
+<Layout title="Konec">
+    <div class="container">
+        <div>
+            <h1>Konec</h1>
+            <p>Děkuji Vám za využití této webové stránky.
+            </p>
+            <p>
+                Pokud naleznete jakékoliv nesrovnalosti, chyby, překlepy, nebo
+                chcete-li jen poskytnout zpětnou vazbu, napište mi na email <a href="mailto:janstefanca@seznam.cz">janstefanca@seznam.cz</a>.
+                Prosím mějte napaměti, že toto je pouze volnočasová dobrovolná nezisková aktivita. Tuto webovou stránku
+                určitě sdílejte dál a volně ji používejte jak chcete. Všechny úryvky jsou tisknutelné (Ctrl+P) a můžete
+                je použít jako referenci třeba do vašich hodin. Pokud chcete podpořit fungování stránky, můžete tak
+                učinit <a
+                    href="https://ko-fi.com/PanJohnny">zde</a>. Speciální poděkování patří Filipovi, který mi pomohl
+                přepsat úryvky textu.
+            </p>
+            <p class="subtitle">
+                Jan Štefanča
+                <br>
+                <br>
+                student gymnázia Litoměřická
+            </p>
+            <ContinueButton href="/" text="Úvod" readTime={-1} />
+        </div>
+    </div>
+</Layout>

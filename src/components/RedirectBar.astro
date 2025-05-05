@@ -33,12 +33,13 @@ let { to } = Astro.props as Props;
     document.addEventListener("astro:page-load", () => {
         setTimeout(() => {
             let countdown = document.querySelector('.countdown') as HTMLDivElement;
-            navigate(countdown.dataset.to);
+            if (countdown && countdown.dataset.to)
+                navigate(countdown.dataset.to);
         }, 5000);
 
         document.addEventListener("click", () => {
             let countdown = document.querySelector('.countdown') as HTMLDivElement;
-            if (countdown)
+            if (countdown && countdown.dataset.to)
                 navigate(countdown.dataset.to);
         })
     })

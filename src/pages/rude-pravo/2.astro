@@ -1,0 +1,16 @@
+---
+import Quiz from "../../components/Quiz.astro";
+import Layout from "../../layouts/Layout.astro";
+---
+<Layout title="Rudé právo, 16. května 1945">
+    <div class="container">
+        <div class="header">
+            Rudé právo, 16. května 1945
+        </div>
+        <div>
+            <h1>Vyberte pravdivé tvrzení</h1>
+
+            <Quiz correctAnswer="Posílení mezinárodního postavení Československa a přispění k vnitřní konsolidaci státu" nextLink="/rude-pravo/3" options={["Vyhlášení samostatnosti Slovenské republiky", "Obnovení monarchie v Československu", "Posílení mezinárodního postavení Československa a přispění k vnitřní konsolidaci státu", "Přílet do Prahy"]} question="Jaký byl hlavní přínos prezidenta Edvarda Beneše podle uvedeného textu?" />
+        </div>
+    </div>
+</Layout>

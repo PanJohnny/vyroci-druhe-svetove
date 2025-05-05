@@ -1,0 +1,17 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Quiz from "../../components/Quiz.astro";
+---
+<Layout title="Národní obroda, 10. května 1945">
+    <div class="container">
+        <div class="header">
+            Národní obroda, 10. května 1945
+        </div>
+        <div>
+            <h1>Vyberte pravdivé tvrzení</h1>
+
+            <Quiz correctAnswer="8. 5. 1945 23:01" nextLink="/narodni-obroda/shrnuti" options={["7. 5. 1945 23:01", "7. 5. 1945 23:59", "8. 5. 1945 23:01", "8. 5. 1945 23:59"]} question="Kdy má podle Protokolu o bezpodmínečné kapitulaci Německa být zastaven boj?" />
+        </div>
+    </div>
+</Layout>
+
